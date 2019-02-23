@@ -6,6 +6,7 @@
   <title>DELIVERY DRIVER</title>
   <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/driver.css">
   <script src="/vue/vue.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/leaflet/leaflet.js"></script>
@@ -13,14 +14,14 @@
 </head>
 <body>
   <div id="page">
-    <a href="/" target="_blank">Open customer view</a> | 
-    <a href="/dispatcher" target="_blank">Open dispatcher view</a> | 
+    <a href="/" target="_blank">Open customer view</a> |
+    <a href="/dispatcher" target="_blank">Open dispatcher view</a> |
     <a href="/driver" target="_blank">Open another driver view</a>
     <h1>
       DELIVERY DRIVER # <input type="textfield" v-model="driverId"/> (enter your ID)
 	  </h1>
     <p>Click in the map to position your truck and click again or drag the icon to move.</p>
-    <div id="my-map"></div>
+
     <br><br>
     Specify your truck's cargo capacity (feel free to choose a reasonable unit of measurement): <input type="textfield" v-model="maxCapacity" @change="updateDriver"/>
     <ul>
@@ -36,6 +37,41 @@
     </ul>
     <div v-if="driverLocation">Utilized capacity: {{ usedCapacity }}/{{ maxCapacity }}</div>
     <button v-on:click="quit">Quit</button>
+  </div>
+  <div class = "interface">
+
+
+    <div class="mission">
+      <div class = "top">
+        <p id="numberOfJobs">n jobs in queue</p>
+      </div>
+      <div class = "currentJob">
+        <div id="currentJob">Current Job:</div>
+        <hr>
+        <p>From: Adress</p>
+        <p>Contact: 1234 56789</p>
+        <hr>
+        <p>To: Adress</p>
+        <p>Contact: 1234 56789</p>
+        <hr>
+      </div>
+      <div class = "interactions">
+        <button class="button" id="">Checkpoint</button>
+
+        <button class="button" id="">Lunch</button>
+
+        <button class="button" id="">Break</button>
+      </div>
+    </div>
+    <div class="map">
+      <div id="my-map"></div>
+    </div>
+    <div class="extraInfo">
+      <p>Extra information:</p>
+      <div id="infoField">
+        text goes here
+      </div>
+    </div>
   </div>
 </body>
 </html>
