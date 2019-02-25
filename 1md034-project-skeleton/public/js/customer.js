@@ -71,7 +71,7 @@ var vm = new Vue({
       socket.emit("placeOrder", { fromLatLong: [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng],
         destLatLong: [this.destMarker.getLatLng().lat, this.destMarker.getLatLng().lng],
         expressOrAlreadyProcessed: this.express ? true : false,
-        orderDetails: { pieces: 1, spaceRequired: 3, totalGrams: 5600,  driverInstructions: "Beware of the dog" }
+                                  orderDetails: {totalgrams: document.getElementById('Vikt').value,  driverInstructions: document.getElementById('Ovrigt').value, telefonMottagare: document.getElementById('Telefonnummert').value, telefonAvsändare: document.getElementById('Telefonnummerf').value, emailMottagare: document.getElementById('emailt').value, emailAvsändare: document.getElementById('emailf').value }
       });
     },
     getPolylinePoints: function() {

@@ -19,12 +19,46 @@
   <a href="/dispatcher" target="_blank">Open dispatcher view</a> | 
   <a href="/driver" target="_blank">Open driver view</a>
   <h1>
-    DELIVERY CUSTOMER 
+    DELIVERY CUSTOMER
   </h1>
+  <label for="Förnamn">Förnamn</label>
+  <input type="text" id="Förnamn" name="F" required="required" placeholder="Förnamn">
+  <br>
+  <label for="Efternamn">Efternamn</label>
+  <input type="text" id="Efternamn" name="E" required="required" placeholder="Efternamn">
+  <br>
+  <label for="Telefonnummerf">Telefonnummer</label>
+  <input type="tel" id="Telefonnummerf" name="Tf" required="required" placeholder="Telefonnummer">
+  <br>
+  <label for="E-mail adressf">E-mail</label>
+  <input type="email" id="emailf" name="Ef" required="required" placeholder="E-mail adress">    
   <p>Select pickup location first, then your parcel's destination</p>
   <div id="page">
     <div id="my-map"></div><br>
-    <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express">Check this box for express delivery!</input><br><br>
+    <label for="Vikt">Vikt</label>
+    <input type="number" id="Vikt" name="V" required="required" placeholder="gram">
+    <br>
+    <label for="Storlek">Storlek</label>
+    <select id="Storlek" name="s">
+      <option>Horse boi</option>
+      <option>Biq boi</option>
+      <option>Medium boi</option>
+      <option>Small boi</option>
+    </select>
+    <br>
+        <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express">Check this box for express delivery!</input><br><br>
+    <h2>Kontakt info</h2>
+    <label for="E-mail adresst">E-mail adress</label>
+    <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
+    <br>
+    <label for="Telefonnummert">Telefonnummer</label>
+    <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
+    <br>
+    <label for="Ovrigt">Övrig info</label>
+    <br>
+    <textarea rows="4" cols="50" id="Ovrigt" name="O" form="usrform">
+    </textarea>
+    <br>
     <button v-on:click="placeOrder">ORDER DELIVERY</button>
     Your order number is {{ orderId }}
   </div>
