@@ -133,5 +133,8 @@ var vm = new Vue({
       var connectMarkers = L.polyline(this.getPolylinePoints(order), {color: 'blue'}).addTo(this.map);
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
     },
+      lengthord: function(order){
+          return order.length()
+      },
   }
 });

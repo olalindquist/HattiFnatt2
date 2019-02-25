@@ -71,7 +71,7 @@ var vm = new Vue({
       socket.emit("placeOrder", { fromLatLong: [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng],
         destLatLong: [this.destMarker.getLatLng().lat, this.destMarker.getLatLng().lng],
         expressOrAlreadyProcessed: this.express ? true : false,
-                                  orderDetails: {totalgrams: document.getElementById('Vikt').value,  driverInstructions: document.getElementById('Ovrigt').value, telefonMottagare: document.getElementById('Telefonnummert').value, telefonAvsändare: document.getElementById('Telefonnummerf').value, emailMottagare: document.getElementById('emailt').value, emailAvsändare: document.getElementById('emailf').value }
+                                  orderDetails: {totalgrams: document.getElementById('Vikt').value, storlek: document.getElementById('Storlek').value, driverInstructions: document.getElementById('Ovrigt').value, telefonMottagare: document.getElementById('Telefonnummert').value, telefonAvsändare: document.getElementById('Telefonnummerf').value, emailMottagare: document.getElementById('emailt').value, emailAvsändare: document.getElementById('emailf').value }
       });
     },
     getPolylinePoints: function() {
