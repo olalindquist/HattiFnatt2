@@ -10,7 +10,6 @@ header {
 }
 
 #center {
-  font-weight: bold;
   padding: 10px;
   text-align: center;
 }
@@ -20,20 +19,29 @@ header {
     grid-column: 2;
     grid-auto-flow: row;
     padding: 20px;
+    border: 3px solid #DDDDFF;
 }
 table {
   margin: auto;
   width: 50%;
-  background-color: #CCC;
+  background-color: #DDDDFF;
   border: 3px solid black;
   padding: 10px;
+}
+
+#extraInfo {
+    margin: auto;
+    width: 50%;
+    background-color: #DDDDFF;
+    border: 3px solid black;
+    padding: 10px;
 }
 
 .interface {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 15% 70% 15%;
-  background-color: #3A5;
+  background-color: #F0F0D8;
   color: #030303;
 }
 
@@ -41,8 +49,9 @@ table {
     background-color: #F4F4F4;
     grid-column: 2;
     grid-auto-flow: row;
-    padding: 10px 0px 0px 0px;
+    padding: 10px;
     margin: 20px 0px 0px 0px;
+    border: 3px solid #DDDDFF;
 }
 
 .button {
@@ -55,4 +64,8 @@ table {
   cursor: pointer;
   height: auto;
   width: 100%;
+}
+
+textarea {
+    resize: none;
 }

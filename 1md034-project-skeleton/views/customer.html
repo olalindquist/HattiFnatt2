@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DELIVERY CUSTOMER</title>
@@ -12,13 +12,13 @@
   <script src="/vue/vue.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/leaflet/leaflet.js"></script>
-  <script src="/esri-leaflet/esri-leaflet.js"></script> 
-  <script src="/esri-leaflet-geocoder/esri-leaflet-geocoder.js"></script> 
+  <script src="/esri-leaflet/esri-leaflet.js"></script>
+  <script src="/esri-leaflet-geocoder/esri-leaflet-geocoder.js"></script>
   <script src="js/customer.js" defer></script>
 </head>
 <body>
-  <a href="/" target="_blank">Open another customer view</a> | 
-  <a href="/dispatcher" target="_blank">Open dispatcher view</a> | 
+  <a href="/" target="_blank">Open another customer view</a> |
+  <a href="/dispatcher" target="_blank">Open dispatcher view</a> |
   <a href="/driver" target="_blank">Open driver view</a>
   <header>
   <h1>
@@ -27,6 +27,7 @@
   </header>
   <div class= "interface">
     <div class="sender">
+       <h2 id="center">Kontaktinfo för avsändare</h2>
       <table>
 	<tr>
 	  <td>
@@ -54,7 +55,7 @@
 	</tr>
 	<tr>
 	  <td>
-	    <label for="E-mail adressf">E-mail</label>   
+	    <label for="E-mail adressf">E-mail</label>
 	  </td>
 	  <td>
 	    <input type="email" id="emailf" name="Ef" required="required" placeholder="E-mail adress">
@@ -62,37 +63,91 @@
 	</tr>
 	</table>
     <br>
-    
+
   </div>
     <div class="packageSpecific" id="page">
-      <p id="center">Välj upphämtning och leverans address</p>
-    <div id="my-map"></div><br>
-    <label for="Vikt">Vikt</label>
-    <input type="number" id="Vikt" name="V" required="required" placeholder="gram">
+      <h3 id="center">Välj upphämtning och leverans address</h3>
+      <div id="my-map"></div><br>
+      <table>
+        <tr>
+          <td>
+            <label for="Vikt">Vikt</label>
+          </td>
+          <td>
+            <input type="number" id="Vikt" name="V" required="required" placeholder="gram">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="Storlek">Storlek</label>
+          </td>
+          <td>
+            <select id="Storlek" name="s">
+              <option>Störst</option>
+              <option>Stor</option>
+              <option>Mellan</option>
+              <option>Liten</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="express">Express</label>
+          </td>
+          <td>
+            <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express" id="express"></input>
+          </td>
+        </tr>
+      </table>
+
     <br>
-    <label for="Storlek">Storlek</label>
-    <select id="Storlek" name="s">
-      <option>Horse boi</option>
-      <option>Biq boi</option>
-      <option>Medium boi</option>
-      <option>Small boi</option>
-    </select>
+        <h2 id="center">Kontaktinfo för mottagare</h2>
+        <table>
+          <tr>
+	  <td>
+	  <label for="Förnamn">Förnamn</label>
+	  </td>
+	  <td>
+	    <input type="text" id="Förnamn" name="F2" required="required" placeholder="Förnamn">
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+	     <label for="Efternamn">Efternamn</label>
+	  </td>
+	  <td>
+	    <input type="text" id="Efternamn" name="E2" required="required" placeholder="Efternamn">
+	  </td>
+	</tr>
+          <tr>
+            <td>
+              <label for="E-mail adresst">E-mail adress</label>
+            </td>
+            <td>
+               <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                  <label for="Telefonnummert">Telefonnummer</label>
+            </td>
+            <td>
+                  <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
+            </td>
+          </tr>
+        </table>
     <br>
-        <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express">Check this box for express delivery!</input><br><br>
-    <h2>Kontakt info</h2>
-    <label for="E-mail adresst">E-mail adress</label>
-    <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
     <br>
-    <label for="Telefonnummert">Telefonnummer</label>
-    <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
-    <br>
+    <div id="extraInfo">
     <label for="Ovrigt">Övrig info</label>
     <br>
-    <textarea rows="4" cols="50" id="Ovrigt" name="O" form="usrform">
+    <textarea rows="4" cols="40" id="Ovrigt" name="O" form="usrform">
     </textarea>
     <br>
     <button v-on:click="placeOrder">ORDER DELIVERY</button>
-    Your order number is {{ orderId }}
+    Your order number is
+    {{ orderId }}
+    </div>
   </div>
   </div>
 </body>
