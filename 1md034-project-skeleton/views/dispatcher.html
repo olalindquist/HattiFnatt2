@@ -19,42 +19,66 @@
   <h1>
     DELIVERY DISPATCHER
   </h1>
+  <div id="page">
   <div class="interface">
     <div class="jobs">
-      aaa
+      <ul>
+      <li v-for="order in orders">
+        # {{ order.orderId}}
+        <br>
+        <b>Express/Processed:</b> {{ order.expressOrAlreadyProcessed ? "Yes" : "No" }}
+            <br>
+            <br>
+            <b>Totalvikt:</b> {{order.orderDetails.totalgrams}} g
+            <br>
+            <b>Storlek:</b> {{order.orderDetails.storlek}}
+            <br>
+            <br>
+ <!--           <b>Avsändare:</b>
+            <br>
+            <b>Telefon:</b> {{order.orderDetails.telefonAvsändare}}
+            <br>
+            <b>Email:</b> {{order.orderDetails.emailAvsändare}}
+            <br>
+            <br>
+            <b>Mottagare</b>
+            <br>
+            <b>Telefon:</b> {{order.orderDetails.telefonMottagare}}
+            <br>
+            <b>Email:</b> {{order.orderDetails.emailMottagare}}
+            <br>
+            <br> -->
+            <b>Övrig information:</b>
+            <br>
+            {{order.orderDetails.driverInstructions}}
+            <hr>
+
+
+
+        <select v-on:change="assignDriver(order)" v-model="order.driverId">
+          <option disabled value="">Assign a driver</option>
+          <option v-for="driver in drivers" :value="driver.driverId"> Chaufför: {{ driver.driverId}} </option>
+        </select>
+        <span v-if="order.driverId != NULL">
+          Assigned to {{order.driverId}}!
+          </span>
+        <div id="testID">
+
+        </div>
+      </li>
+    </ul>
     </div>
     <div class="middle">
       <div id="my-map"></div>
     </div>
-    <div class="drivers">
-      <p v-for="driver in drivers">
+    <div class="driversInfo">
+      <ul>
+        <li v-for="driver in drivers">
         {{driver.driverId}}
-
-
-
-      </p>
+      </li>
+      </ul>
     </div>
   </div>
-  <div id="page">
-
-    <h1>Orders</h1>
-    <ul>
-      <li v-for="order in orders">
-        # {{ order.orderId}} From: {{ order.fromLatLong[0].toFixed(3) }}, {{ order.fromLatLong[1].toFixed(3) }} Destination: {{ order.destLatLong[0].toFixed(3) }}, {{ order.destLatLong[1].toFixed(3) }} Express/Processed: {{ order.expressOrAlreadyProcessed ? "Yes" : "No" }}
-        <ul>
-          <li v-for="(detail, key) in order.orderDetails">
-            {{ key + ": " + detail }}
-          </li>
-        </ul>
-        <select v-on:change="assignDriver(order)" v-model="order.driverId">
-          <option disabled value="">Assign a driver</option>
-          <option v-for="driver in drivers" :value="driver.driverId"># {{ driver.driverId}} Pos: {{ driver.latLong.lat.toFixed(3) }}, {{ driver.latLong.lng.toFixed(3) }} </option>
-        </select> Assigned to driver #{{ order.driverId }}
-        <div id="testID">
-        
-        </div>
-      </li>
-    </ul>
   </div>
 </body>
 </html>

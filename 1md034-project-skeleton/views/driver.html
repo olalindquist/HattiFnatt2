@@ -29,7 +29,7 @@
 
           <div class="mission">
             <div class = "top">
-              <div v-for="(order,index,i) in orders" v-if="i==0">
+              <div v-for="(order,index,i) in orders" v-if="(i==0) && (order.driverId == driverId)">
                i
               </div>
 
@@ -37,11 +37,11 @@
       <div class="currentJob">
         <div id="currentJob">Current Job:
         </div>
-        <div v-for="(order,index,i) in orders" v-if="i==0">
-        From: {{ order.fromLatLong[0].toFixed(3) }}, {{ order.fromLatLong[1].toFixed(3) }} To:  {{ order.destLatLong[0].toFixed(3) }}, {{ order.destLatLong[1].toFixed(3) }} 
+        <div v-for="(order,index,i) in orders" v-if="(i==0) && (order.driverId == driverId)">
+        From: {{ order.fromLatLong[0].toFixed(3) }}, {{ order.fromLatLong[1].toFixed(3) }} To:  {{ order.destLatLong[0].toFixed(3) }}, {{ order.destLatLong[1].toFixed(3) }}
 
         </div>
-        
+
         <div id="pick">
       </div>
       </div>
@@ -64,7 +64,7 @@
     <div class="extraInfo">
       <p>Extra information:</p>
       <div id="infoField">
-        <div v-for="(order,index,i) in orders" v-if="i==0">
+        <div v-for="(order,index,i) in orders" v-if="(i==0) && (order.driverId == driverId)">
           Vikt: {{order.orderDetails.totalgrams}} g <br><br>
           Storlek: {{order.orderDetails.storlek}} <br><br>
           <hr>

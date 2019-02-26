@@ -1,0 +1,38 @@
+#hej {
+    color: #123;
+}
+
+.interface {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 20% 60% 20%;
+    background-color: #DDD;
+    color: #FFFFFF;
+}
+
+.jobs {
+    grid-column: 1;
+    background-color: #DDF;
+    color: #000;
+    border-radius: 0px;
+    padding: 0px;
+    grid-auto-flow: row;
+}
+
+.middle {
+    grid-column: 2;
+    background-color: #F4F4F4;
+    color: #000;
+    border-radius: 0px;
+    padding: 0px;
+    grid-auto-flow: row;
+}
+
+.driversInfo {
+    grid-column: 3;
+    background-color: #DDF;
+    color: #000;
+    border-radius: 0px;
+    padding: 0px;
+    grid-auto-flow: row;
+}
