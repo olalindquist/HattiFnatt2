@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
+
+body {
+    font-family: arial;
+}
+
+
+header {
+    border: 0px 0px 5px 0px solid black;
+}
+
+#center {
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+.sender {
+    background-color: #F4F4F4;
+    color: black;
+    grid-column: 2;
+    grid-auto-flow: row;
+    padding: 20px;
+}
+table {
+  margin: auto;
+  width: 50%;
+  background-color: #CCC;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.interface {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 15% 70% 15%;
+  background-color: #3A5;
+  color: #030303;
+}
+
+.packageSpecific {
+    background-color: #F4F4F4;
+    grid-column: 2;
+    grid-auto-flow: row;
+    padding: 10px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
+}
+
+.button {
+  background-color: #567;
+  border: 2px solid #346;
+  color: black;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  height: auto;
+  width: 100%;
+}

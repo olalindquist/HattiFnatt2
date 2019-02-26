@@ -6,20 +6,37 @@
   <title>DELIVERY DISPATCHER</title>
   <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/dispatcher.css">
   <script src="/vue/vue.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/leaflet/leaflet.js"></script>
   <script src="js/dispatcher.js" defer></script>
 </head>
 <body>
-  <a href="/" target="_blank">Open customer view</a> | 
-  <a href="/dispatcher" target="_blank">Open another dispatcher view</a> | 
+  <a href="/" target="_blank">Open customer view</a> |
+  <a href="/dispatcher" target="_blank">Open another dispatcher view</a> |
   <a href="/driver" target="_blank">Open driver view</a>
   <h1>
     DELIVERY DISPATCHER
   </h1>
+  <div class="interface">
+    <div class="jobs">
+      aaa
+    </div>
+    <div class="middle">
+      <div id="my-map"></div>
+    </div>
+    <div class="drivers">
+      <p v-for="driver in drivers">
+        {{driver.driverId}}
+
+
+
+      </p>
+    </div>
+  </div>
   <div id="page">
-    <div id="my-map"></div>
+
     <h1>Orders</h1>
     <ul>
       <li v-for="order in orders">
