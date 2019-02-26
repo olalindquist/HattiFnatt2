@@ -50,6 +50,9 @@
           <option disabled value="">Assign a driver</option>
           <option v-for="driver in drivers" :value="driver.driverId"># {{ driver.driverId}} Pos: {{ driver.latLong.lat.toFixed(3) }}, {{ driver.latLong.lng.toFixed(3) }} </option>
         </select> Assigned to driver #{{ order.driverId }}
+        <div id="testID">
+        
+        </div>
       </li>
     </ul>
   </div>

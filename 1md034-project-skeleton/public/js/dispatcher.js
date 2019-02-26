@@ -11,7 +11,7 @@ var vm = new Vue({
     drivers: {},
     customerMarkers: {},
     driverMarkers: {},
-    baseMarker: null
+      baseMarker: null,      
   },
 
   created: function () {
@@ -49,21 +49,23 @@ var vm = new Vue({
     }.bind(this));
 
     socket.on('orderPlaced', function (order) {
-      this.$set(this.orders, order.orderId, order);
+        this.$set(this.orders, order.orderId, order);
       this.customerMarkers[order.orderId] = this.putCustomerMarkers(order);
     }.bind(this));
     socket.on('driverAssigned', function (order) {
-      this.$set(this.orders, order.orderId, order);
+        this.$set(this.orders, order.orderId, order);
     }.bind(this));
     socket.on('orderPickedUp', function (order) {
-      this.$set(this.orders, order.orderId, order);
+        this.$set(this.orders, order.orderId, order);
+        document.getElementById("testID").innerHTML="HAS BEEN PICKED UP";
     }.bind(this));
     socket.on('orderDroppedOff', function (orderId) {
       Vue.delete(this.orders, orderId);
       this.map.removeLayer(this.customerMarkers[orderId].from);
       this.map.removeLayer(this.customerMarkers[orderId].dest);
       this.map.removeLayer(this.customerMarkers[orderId].line);
-      Vue.delete(this.customerMarkers, orderId);
+        Vue.delete(this.customerMarkers, orderId);
+        document.getElementById("testID").innerHTML="";
     }.bind(this));
 
     // These icons are not reactive

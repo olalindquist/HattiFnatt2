@@ -4,6 +4,7 @@
 'use strict';
 var socket = io();
 
+
 var vm = new Vue({
   el: '#page',
   data: {
@@ -14,10 +15,10 @@ var vm = new Vue({
     usedCapacity: 0,
     orders: {},
     customerMarkers: {},
-    baseMarker: null
+      baseMarker: null
   },
   created: function () {
-    socket.on('initialize', function (data) {
+      socket.on('initialize', function (data) {
       // add marker for home base in the map
       this.baseMarker = L.marker(data.base, {icon: this.baseIcon}).addTo(this.map);
       this.baseMarker.bindPopup("This is the dispatch and routing center");
@@ -100,20 +101,21 @@ var vm = new Vue({
     orderPickedUp: function (order) {
       // Update used capacity
       this.usedCapacity += order.orderDetails.spaceRequired;
-
+        document.getElementById("pick").innerHTML="This packet has been picked up";
       // TODO: Update polyline, remove last segment  
       socket.emit("orderPickedUp", order);
     },
     orderDroppedOff: function (order) {
-      // Update used capacity
-      this.usedCapacity -= order.orderDetails.spaceRequired;
-
-      Vue.delete(this.orders, order.orderId);
+        // Update used capacity
+        this.kj--;
+        document.getElementById("pick").innerHTML="";
+        this.usedCapacity -= order.orderDetails.spaceRequired; 
+        Vue.delete(this.orders, order.orderId);
       this.map.removeLayer(this.customerMarkers[order.orderId].from);
       this.map.removeLayer(this.customerMarkers[order.orderId].dest);
       this.map.removeLayer(this.customerMarkers[order.orderId].line);
       Vue.delete(this.customerMarkers[order.orderId]);
-      socket.emit("orderDroppedOff", order.orderId);
+      socket.emit("orderDroppedOff", order.orderId);  
     },
     // TODO: express and processed need to be separated to properly represent a
     // non-express processed order (i.e. a regular order when going from the distribution
@@ -134,7 +136,7 @@ var vm = new Vue({
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
     },
       lengthord: function(order){
-          return order.length()
+          return this.kj
       },
   }
 });
