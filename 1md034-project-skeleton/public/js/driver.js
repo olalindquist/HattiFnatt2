@@ -4,6 +4,7 @@
 'use strict';
 var socket = io();
 
+
 var vm = new Vue({
   el: '#page',
   data: {
@@ -14,10 +15,11 @@ var vm = new Vue({
     usedCapacity: 0,
     orders: {},
     customerMarkers: {},
-    baseMarker: null
+      baseMarker: null,
+      kj: 0,
   },
   created: function () {
-    socket.on('initialize', function (data) {
+      socket.on('initialize', function (data) {
       // add marker for home base in the map
       this.baseMarker = L.marker(data.base, {icon: this.baseIcon}).addTo(this.map);
       this.baseMarker.bindPopup("This is the dispatch and routing center");
@@ -105,9 +107,9 @@ var vm = new Vue({
       socket.emit("orderPickedUp", order);
     },
     orderDroppedOff: function (order) {
-      // Update used capacity
-      this.usedCapacity -= order.orderDetails.spaceRequired;
-
+        // Update used capacity
+        this.kj--;
+      this.usedCapacity -= order.orderDetails.spaceRequired; 
       Vue.delete(this.orders, order.orderId);
       this.map.removeLayer(this.customerMarkers[order.orderId].from);
       this.map.removeLayer(this.customerMarkers[order.orderId].dest);
@@ -134,7 +136,7 @@ var vm = new Vue({
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
     },
       lengthord: function(order){
-          return order.length()
+          return this.kj
       },
   }
 });

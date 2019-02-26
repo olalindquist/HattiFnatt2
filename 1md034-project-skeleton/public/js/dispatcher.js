@@ -11,7 +11,8 @@ var vm = new Vue({
     drivers: {},
     customerMarkers: {},
     driverMarkers: {},
-    baseMarker: null
+      baseMarker: null,
+      kj:0
   },
 
   created: function () {
@@ -49,7 +50,8 @@ var vm = new Vue({
     }.bind(this));
 
     socket.on('orderPlaced', function (order) {
-      this.$set(this.orders, order.orderId, order);
+        this.kj++;
+        this.$set(this.orders, order.orderId, order);
       this.customerMarkers[order.orderId] = this.putCustomerMarkers(order);
     }.bind(this));
     socket.on('driverAssigned', function (order) {
