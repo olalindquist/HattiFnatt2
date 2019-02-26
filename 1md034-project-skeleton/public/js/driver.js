@@ -15,8 +15,7 @@ var vm = new Vue({
     usedCapacity: 0,
     orders: {},
     customerMarkers: {},
-      baseMarker: null,
-      kj: 0,
+      baseMarker: null
   },
   created: function () {
       socket.on('initialize', function (data) {
@@ -102,20 +101,21 @@ var vm = new Vue({
     orderPickedUp: function (order) {
       // Update used capacity
       this.usedCapacity += order.orderDetails.spaceRequired;
-
+        document.getElementById("pick").innerHTML="This packet has been picked up";
       // TODO: Update polyline, remove last segment  
       socket.emit("orderPickedUp", order);
     },
     orderDroppedOff: function (order) {
         // Update used capacity
         this.kj--;
-      this.usedCapacity -= order.orderDetails.spaceRequired; 
-      Vue.delete(this.orders, order.orderId);
+        document.getElementById("pick").innerHTML="";
+        this.usedCapacity -= order.orderDetails.spaceRequired; 
+        Vue.delete(this.orders, order.orderId);
       this.map.removeLayer(this.customerMarkers[order.orderId].from);
       this.map.removeLayer(this.customerMarkers[order.orderId].dest);
       this.map.removeLayer(this.customerMarkers[order.orderId].line);
       Vue.delete(this.customerMarkers[order.orderId]);
-      socket.emit("orderDroppedOff", order.orderId);
+      socket.emit("orderDroppedOff", order.orderId);  
     },
     // TODO: express and processed need to be separated to properly represent a
     // non-express processed order (i.e. a regular order when going from the distribution
