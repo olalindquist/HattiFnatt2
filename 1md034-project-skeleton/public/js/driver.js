@@ -70,7 +70,7 @@ var vm = new Vue({
   methods: {
     getDriverInfo: function () {
       return  { driverId: this.driverId,
-        latLong: this.driverLocation.getLatLng(), 
+        latLong: this.driverLocation.getLatLng(),
         maxCapacity: this.maxCapacity,
         usedCapacity: this.usedCapacity
       };
@@ -102,20 +102,29 @@ var vm = new Vue({
       // Update used capacity
       this.usedCapacity += order.orderDetails.spaceRequired;
         document.getElementById("pick").innerHTML="This packet has been picked up";
-      // TODO: Update polyline, remove last segment  
+      // TODO: Update polyline, remove last segment
       socket.emit("orderPickedUp", order);
+      if (!(order.expressOrAlreadyProcessed)) {
+        order.fromLatLong = this.baseMarker.getLatLng();
+      }
+      order.expressOrAlreadyProcessed = true;
+
+      this.map.removeLayer(this.customerMarkers[order.orderId].from);
+      this.map.removeLayer(this.customerMarkers[order.orderId].dest);
+      this.map.removeLayer(this.customerMarkers[order.orderId].line);
+      this.customerMarkers[order.orderId] = this.putCustomerMarkers(order)
     },
     orderDroppedOff: function (order) {
         // Update used capacity
         this.kj--;
         document.getElementById("pick").innerHTML="";
-        this.usedCapacity -= order.orderDetails.spaceRequired; 
+        this.usedCapacity -= order.orderDetails.spaceRequired;
         Vue.delete(this.orders, order.orderId);
       this.map.removeLayer(this.customerMarkers[order.orderId].from);
       this.map.removeLayer(this.customerMarkers[order.orderId].dest);
       this.map.removeLayer(this.customerMarkers[order.orderId].line);
       Vue.delete(this.customerMarkers[order.orderId]);
-      socket.emit("orderDroppedOff", order.orderId);  
+      socket.emit("orderDroppedOff", order.orderId);
     },
     // TODO: express and processed need to be separated to properly represent a
     // non-express processed order (i.e. a regular order when going from the distribution
