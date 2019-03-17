@@ -102,7 +102,6 @@ var vm = new Vue({
       // Update used capacity
       this.usedCapacity += order.orderDetails.spaceRequired;
         document.getElementById("pick").innerHTML="This packet has been picked up";
-      // TODO: Update polyline, remove last segment
       socket.emit("orderPickedUp", order);
       if (!(order.expressOrAlreadyProcessed)) {
         order.fromLatLong = this.baseMarker.getLatLng();
@@ -126,9 +125,7 @@ var vm = new Vue({
       Vue.delete(this.customerMarkers[order.orderId]);
       socket.emit("orderDroppedOff", order.orderId);
     },
-    // TODO: express and processed need to be separated to properly represent a
-    // non-express processed order (i.e. a regular order when going from the distribution
-    // terminal to final destination)
+
     getPolylinePoints: function (order) {
       if (order.expressOrAlreadyProcessed) {
         return [order.fromLatLong, order.destLatLong];
