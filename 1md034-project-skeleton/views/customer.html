@@ -74,7 +74,7 @@
             <label for="Vikt">Vikt</label>
           </td>
           <td>
-            <input type="number" id="Vikt" name="V" required="required" placeholder="gram">
+            <input type="number" min="0" id="Vikt" name="V" required="required" placeholder="gram">
           </td>
         </tr>
         <tr>
@@ -145,7 +145,6 @@
     </textarea>
     <br>
     <button v-on:click="placeOrder">ORDER DELIVERY</button>
-    Your order number is
     {{ orderId }}
     </div>
   </div>
