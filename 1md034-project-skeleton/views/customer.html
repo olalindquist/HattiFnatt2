@@ -22,7 +22,7 @@
   </head>
   <body>
     <header>
- <img id="Upkri" src="img/UPPsalA.jpg" alt="En bild med saker i"> 
+ <img id="Upkri" src="img/UPPsalA.jpg" alt="En bild med saker i">
     </header>
     <div id="page">
       <div class="interface">
@@ -34,7 +34,7 @@
                 <label class="active" for="Förnamn">Förnamn</label>
 	            </td>
 	            <td>
-	                <input type="text" id="Förnamnf" name="F" required="required" placeholder="Förnamn">
+	                <input type="text" id="Förnamnf" name="F" required="required" placeholder="">
 	            </td>
 	          </tr>
 	          <tr>
@@ -42,7 +42,7 @@
 	              <label for="Efternamn">Efternamn</label>
 	            </td>
 	            <td>
-	              <input type="text" id="Efternamnf" name="E" required="required" placeholder="Efternamn">
+	              <input type="text" id="Efternamnf" name="E" required="required" placeholder="">
 	            </td>
 	          </tr>
 	          <tr>
@@ -50,7 +50,7 @@
 	              <label for="Telefonnummerf">Telefonnummer</label>
 	            </td>
 	            <td>
-	              <input type="tel" id="Telefonnummerf" name="Tf" required="required" placeholder="Telefonnummer">
+	              <input type="tel" id="Telefonnummerf" name="Tf" required="required" placeholder="">
 	            </td>
 	          </tr>
 	          <tr>
@@ -58,7 +58,7 @@
 	              <label for="E-mail adressf">E-mail</label>
 	            </td>
 	            <td>
-	              <input type="email" id="emailf" name="Ef" required="required" placeholder="E-mail adress">
+	              <input type="email" id="emailf" name="Ef" required="required" placeholder="">
 	            </td>
 	          </tr>
 	        </table>
@@ -71,10 +71,10 @@
           <table>
             <tr>
               <td>
-                <label for="Vikt">Vikt</label>
+                <label for="Vikt">Vikt i gram</label>
               </td>
               <td>
-                <input type="number" min="0" id="Vikt" name="V" required="required" placeholder="gram">
+                <input type="number" min="0" id="Vikt" name="V" required="required" placeholder="">
               </td>
             </tr>
             <tr>
@@ -83,16 +83,16 @@
               </td>
               <td>
                 <select id="Storlek" name="s">
-                  <option>Störst</option>
-                  <option>Stor</option>
-                  <option>Mellan</option>
-                  <option>Liten</option>
+                  <option>Störst (60 cm x 60 cm x 60 cm eller större)</option>
+                  <option>Stor (60 cm x 60 cm x 60 cm eller mindre)</option>
+                  <option>Mellan (60 cm x 60 cm x 10 cm eller mindre)</option>
+                  <option>Liten (30 cm x 30 cm x 5 cm eller mindre)</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="express">Express</label>
+                <label for="express">Express: 20% dyrare 100% snabbare</label>
               </td>
               <td>
                 <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express" id="express"></input>
@@ -108,7 +108,7 @@
 	              <label for="Förnamn">Förnamn</label>
 	            </td>
 	            <td>
-	              <input type="text" id="Förnamnt" name="F2" required="required" placeholder="Förnamn">
+	              <input type="text" id="Förnamnt" name="F2" required="required" placeholder="">
 	            </td>
 	          </tr>
 	          <tr>
@@ -116,7 +116,7 @@
 	              <label for="Efternamn">Efternamn</label>
 	            </td>
 	            <td>
-	              <input type="text" id="Efternamnt" name="E2" required="required" placeholder="Efternamn">
+	              <input type="text" id="Efternamnt" name="E2" required="required" placeholder="">
 	            </td>
 	          </tr>
             <tr>
@@ -124,7 +124,7 @@
                 <label for="E-mail adresst">E-mail adress</label>
               </td>
               <td>
-                <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
+                <input type="email" id="emailt" name="Et" required="required" placeholder="">
               </td>
             </tr>
             <tr>
@@ -132,7 +132,7 @@
                 <label for="Telefonnummert">Telefonnummer</label>
               </td>
               <td>
-                <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
+                <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="">
               </td>
             </tr>
           </table>
@@ -158,7 +158,7 @@
 
             </div>
             <div class="modal-body">
-              {{orderInfo.FnamnF}} {{orderInfo.EnamnF}} 
+              {{orderInfo.FnamnF}} {{orderInfo.EnamnF}}
               ditt paket kommer att levereras till
               {{orderInfo.FnamnM}} {{orderInfo.EnamnM}} <br>
               Vikt på Paketet: {{orderInfo.totalgrams}} g <br>

@@ -3,7 +3,7 @@
 body {
     font-family: arial;
     background-color:#f0f0d8;
-    
+
 }
 head{
     background-color:#f0f0d8;
@@ -16,6 +16,7 @@ header {
     background-color:#f0f0d8;
     width:100%;
 }
+
 
 #center {
   padding: 10px;
@@ -35,7 +36,7 @@ table {
   background-color: #DDDDFF;
   border: 3px solid black;
   padding: 10px;
-  
+
 }
 
 #extraInfo {
@@ -67,11 +68,13 @@ table {
     display:block;
 }
 
+
+
 #express{
     display:block;
     visibility:visible;
     position:static;
-    
+
 }
 
 .button {
@@ -88,6 +91,7 @@ table {
 
 textarea {
     resize: none;
+    background-color: white;
 }
 .modal {
   display: none; /* Hidden by default */
@@ -120,7 +124,7 @@ textarea {
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
+  from {top:-300px; opacity:0}
   to {top:0; opacity:1}
 }
 
@@ -156,14 +160,16 @@ textarea {
     padding: 2px 25px;
     background-color: #F4F4F4;
     border: 3px solid #DDDDFF;
-    
+
  }
 label{
     color:black;
+    font-weight: bold;
 }
 input{
     color:black;
-    opacity:1;
+    opacity: 2;
+    background-color: white;
 }
 #Upkri{
     width:100%;
