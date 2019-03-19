@@ -2,9 +2,31 @@
     color: #123;
 }
 
+ul {
+  padding-inline-start: 0px;
+
+}
+
+h2 {
+  padding-left: 20px;
+  font-weight: lighter;
+  font-size: 27px;
+
+}
+
+.box {
+  padding: 10px 10px 10px 10px;
+  background-color: #f4f4f4;
+  margin: 20px;
+  border: 3px solid black;
+
+}
+
+
+
 .interface {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 0px;
     grid-template-columns: 20% 60% 20%;
     background-color: #DDD;
     color: #FFFFFF;
@@ -12,27 +34,34 @@
 
 .jobs {
     grid-column: 1;
-    background-color: #DDF;
+    background-color: #F0F0D8;
     color: #000;
-    border-radius: 0px;
     padding: 0px;
     grid-auto-flow: row;
+    border-right: 3px solid #000;
 }
 
 .middle {
     grid-column: 2;
     background-color: #F4F4F4;
     color: #000;
-    border-radius: 0px;
     padding: 0px;
     grid-auto-flow: row;
 }
 
 .driversInfo {
     grid-column: 3;
-    background-color: #DDF;
+    background-color: #F0F0D8;
     color: #000;
     border-radius: 0px;
     padding: 0px;
     grid-auto-flow: row;
+    border-left: 3px solid #000;
+}
+#my-map {
+  width: 100%;
+  height: 95vh;
+	border: 0px solid rgba(0,0,0,0.4);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+	margin: 0em auto;
 }

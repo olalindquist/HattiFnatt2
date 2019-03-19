@@ -13,20 +13,18 @@
   <script src="js/dispatcher.js" defer></script>
 </head>
 <body>
-  <a href="/" target="_blank">Open customer view</a> |
-  <a href="/dispatcher" target="_blank">Open another dispatcher view</a> |
-  <a href="/driver" target="_blank">Open driver view</a>
-  <h1>
-    DELIVERY DISPATCHER
-  </h1>
+
+
   <div id="page">
   <div class="interface">
     <div class="jobs">
+      <h2>Nuvarande ordrar:</h2>
+
       <ul>
-      <li v-for="order in orders">
-        # {{ order.orderId}}
+      <ul class="box" v-for="order in orders">
+        Order # {{ order.orderId}}
         <br>
-        <b>Express/Processed:</b> {{ order.expressOrAlreadyProcessed ? "Yes" : "No" }}
+        <b> {{ order.expressOrAlreadyProcessed ? "Express/Utgående" : "Ej bearbetad" }}</b>
             <br>
             <br>
             <b>Totalvikt:</b> {{order.orderDetails.totalgrams}} g
@@ -50,32 +48,38 @@
             <br> -->
             <b>Övrig information:</b>
             <br>
-            {{order.orderDetails.driverInstructions}}
             <hr>
 
+            {{order.orderDetails.driverInstructions}}
 
+
+            <span v-if="order.driverId != NULL">
+              <br>
+              Nuvarande Chaufför: {{order.driverId}}
+            </span>
 
         <select v-on:change="assignDriver(order)" v-model="order.driverId">
-          <option disabled value="">Assign a driver</option>
+          <option disabled value="">Välj förare</option>
           <option v-for="driver in drivers" :value="driver.driverId"> Chaufför: {{ driver.driverId}} </option>
         </select>
-        <span v-if="order.driverId != NULL">
-          Assigned to {{order.driverId}}!
-          </span>
         <div id="testID">
 
         </div>
-      </li>
+        <hr>
+      </ul>
     </ul>
     </div>
     <div class="middle">
       <div id="my-map"></div>
     </div>
     <div class="driversInfo">
+      <h2>Förare:</h2>
       <ul>
-        <li v-for="driver in drivers">
-        {{driver.driverId}}
-      </li>
+        <ul v-for="driver in drivers" class="box">
+        <b>Chaufför: </b>{{driver.driverId}}
+        <br>
+        <p>Jobb i kö: {{lengthord()}}</p>
+      </ul>
       </ul>
     </div>
   </div>

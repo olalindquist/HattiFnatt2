@@ -11,7 +11,7 @@ var vm = new Vue({
     drivers: {},
     customerMarkers: {},
     driverMarkers: {},
-      baseMarker: null,      
+      baseMarker: null,
   },
 
   created: function () {
@@ -87,7 +87,7 @@ var vm = new Vue({
       iconSize: [40,40],
       iconAnchor: [20,20]
     });
-       
+
   },
   mounted: function () {
     // set up the map
@@ -138,6 +138,15 @@ var vm = new Vue({
       destMarker.orderId = order.orderId;
       var connectMarkers = L.polyline(this.getPolylinePoints(order), {color: 'blue'}).addTo(this.map);
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
+    },
+    lengthord: function(order){
+        let siff = 0;
+        for (let key in this.orders) {
+                  if (this.orders[key].driverId){
+                      siff ++;
+                  }
+              }
+        return siff;
     },
     assignDriver: function (order) {
       socket.emit("driverAssigned", order);
