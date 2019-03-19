@@ -21,13 +21,8 @@
     <script src="js/customer.js" defer></script>
   </head>
   <body>
-    <a href="/" target="_blank">Open another customer view</a> |
-    <a href="/dispatcher" target="_blank">Open dispatcher view</a> |
-    <a href="/driver" target="_blank">Open driver view</a>
     <header>
-      <h1>
-        Uppsala Fyrisånkeri
-      </h1>
+ <img id="Upkri" src="img/UPPsalA.jpg" alt="En bild med saker i"> 
     </header>
     <div id="page">
       <div class="interface">
@@ -36,10 +31,10 @@
           <table>
 	          <tr>
 	            <td>
-	              <label for="Förnamn">Förnamn</label>
+                <label class="active" for="Förnamn">Förnamn</label>
 	            </td>
 	            <td>
-	              <input type="text" id="Förnamnf" name="F" required="required" placeholder="Förnamn">
+	                <input type="text" id="Förnamnf" name="F" required="required" placeholder="Förnamn">
 	            </td>
 	          </tr>
 	          <tr>
@@ -149,7 +144,7 @@
             <textarea rows="4" cols="40" id="Ovrigt" name="O" form="usrform">
             </textarea>
             <br>
-            <button v-on:click="openModal()" id="myBtn">Summarize Order</button>
+            <button v-on:click="openModal()" id="myBtn">Sammanfatta ordern</button>
 
           </div>
         </div>
@@ -168,7 +163,7 @@
               {{orderInfo.FnamnM}} {{orderInfo.EnamnM}} <br>
               Vikt på Paketet: {{orderInfo.totalgrams}} g <br>
               Paketets storlek: {{orderInfo.storlek}} <br>
-              Övrig info: {{orderInfo.Instructions}} <br>
+              Övrig info: {{orderInfo.driverInstructions}} <br>
               Telefon Mottagare: {{orderInfo.telefonMottagare}} <br>
               E-mail Mottagare:  {{orderInfo.emailMottagare}} <br>
               Telefon Avsändare: {{orderInfo.telefonAvsändare}} <br>
@@ -178,11 +173,7 @@
             </div>
 
           </div>
-
         </div>
-
-
       </div>
-
   </body>
 </html>
