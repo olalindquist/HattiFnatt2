@@ -7,14 +7,18 @@ var socket = io();
 var vm = new Vue({
   el: '#page',
   data: {
-    express: null,
-    orderId: null,
-    map: null,
-    fromMarker: null,
-    destMarker: null,
-    baseMarker: null,
-    driverMarkers: {}
+      express: null,
+      orderId: null,
+      map: null,
+      fromMarker: null,
+      destMarker: null,
+      baseMarker: null,
+      driverMarkers: {},
+      orderInfo:{}
   },
+
+
+// When the user clicks the button, open the modal 
   created: function () {
     socket.on('initialize', function (data) {
       // add marker for home base in the map
@@ -67,13 +71,31 @@ var vm = new Vue({
     }.bind(this));
   },
   methods: {
-    placeOrder: function() {
-      socket.emit("placeOrder", { fromLatLong: [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng],
+      orderSum: function() {
+
+          this.orderInfo = {totalgrams: document.getElementById('Vikt').value, storlek: document.getElementById('Storlek').value, driverInstructions: document.getElementById('Ovrigt').value, telefonMottagare: document.getElementById('Telefonnummert').value, telefonAvsändare: document.getElementById('Telefonnummerf').value, emailMottagare: document.getElementById('emailt').value, emailAvsändare: document.getElementById('emailf').value, FnamnM: document.getElementById('Förnamnt').value, EnamnM: document.getElementById('Efternamnt').value, FnamnF: document.getElementById('Förnamnf').value, EnamnF: document.getElementById('Efternamnf').value}
+      },
+      getNumber: function() {
+    var minNumber = 0; // The minimum number you want
+    var maxNumber = 10000000; // The maximum number you want
+    var randomnumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber); // Generates random number
+    $('#myNumber').html(randomnumber); // Sets content of <div> to number
+    return randomnumber; // Returns false just to tidy everything up
+      },
+      placeOrder: function() {
+          this.orderSum();
+                   socket.emit("placeOrder", { fromLatLong: [this.fromMarker.getLatLng().lat, this.fromMarker.getLatLng().lng],
         destLatLong: [this.destMarker.getLatLng().lat, this.destMarker.getLatLng().lng],
         expressOrAlreadyProcessed: this.express ? true : false,
                                   orderDetails: {totalgrams: document.getElementById('Vikt').value, storlek: document.getElementById('Storlek').value, driverInstructions: document.getElementById('Ovrigt').value, telefonMottagare: document.getElementById('Telefonnummert').value, telefonAvsändare: document.getElementById('Telefonnummerf').value, emailMottagare: document.getElementById('emailt').value, emailAvsändare: document.getElementById('emailf').value }
-      });
-    },
+                                   });
+        window.location.href="./done.html";
+      },
+      openModal: function (){
+          this.orderSum();
+          $("#myModal").openModal();
+          
+  },
     getPolylinePoints: function() {
       if (this.express) {
         return [this.fromMarker.getLatLng(), this.destMarker.getLatLng()];

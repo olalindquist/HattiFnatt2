@@ -2,152 +2,187 @@
 <html>
   <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DELIVERY CUSTOMER</title>
-  <link rel="stylesheet" href="/leaflet/leaflet.css">
-  <link rel="stylesheet" href="/esri-leaflet-geocoder/esri-leaflet-geocoder.css">
-  <link rel="stylesheet" href="css/shared.css">
-  <link rel="stylesheet" href="css/customer.css">
-  <script src="/vue/vue.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/leaflet/leaflet.js"></script>
-  <script src="/esri-leaflet/esri-leaflet.js"></script>
-  <script src="/esri-leaflet-geocoder/esri-leaflet-geocoder.js"></script>
-  <script src="js/customer.js" defer></script>
-</head>
-<body>
-  <a href="/" target="_blank">Open another customer view</a> |
-  <a href="/dispatcher" target="_blank">Open dispatcher view</a> |
-  <a href="/driver" target="_blank">Open driver view</a>
-  <header>
-  <h1>
-    Uppsala Fyrisånkeri
-  </h1>
-  </header>
-  <div class= "interface">
-    <div class="sender">
-       <h2 id="center">Kontaktinfo för avsändare</h2>
-      <table>
-	<tr>
-	  <td>
-	  <label for="Förnamn">Förnamn</label>
-	  </td>
-	  <td>
-	    <input type="text" id="Förnamn" name="F" required="required" placeholder="Förnamn">
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	     <label for="Efternamn">Efternamn</label>
-	  </td>
-	  <td>
-	    <input type="text" id="Efternamn" name="E" required="required" placeholder="Efternamn">
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	    <label for="Telefonnummerf">Telefonnummer</label>
-	  </td>
-	  <td>
-	    <input type="tel" id="Telefonnummerf" name="Tf" required="required" placeholder="Telefonnummer">
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	    <label for="E-mail adressf">E-mail</label>
-	  </td>
-	  <td>
-	    <input type="email" id="emailf" name="Ef" required="required" placeholder="E-mail adress">
-	  </td>
-	</tr>
-	</table>
-    <br>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DELIVERY CUSTOMER</title>
+    <link rel="stylesheet" href="/leaflet/leaflet.css">
+    <link rel="stylesheet" href="/esri-leaflet-geocoder/esri-leaflet-geocoder.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/customer.css">
+    <script src="/vue/vue.js"></script>
 
-  </div>
-    <div class="packageSpecific" id="page">
-      <h3 id="center">Välj upphämtning och leverans address</h3>
-      <div id="my-map"></div><br>
-      <table>
-        <tr>
-          <td>
-            <label for="Vikt">Vikt</label>
-          </td>
-          <td>
-            <input type="number" min="0" id="Vikt" name="V" required="required" placeholder="gram">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="Storlek">Storlek</label>
-          </td>
-          <td>
-            <select id="Storlek" name="s">
-              <option>Störst</option>
-              <option>Stor</option>
-              <option>Mellan</option>
-              <option>Liten</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label for="express">Express</label>
-          </td>
-          <td>
-            <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express" id="express"></input>
-          </td>
-        </tr>
-      </table>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/leaflet/leaflet.js"></script>
+    <script src="/esri-leaflet/esri-leaflet.js"></script>
+    <script src="/esri-leaflet-geocoder/esri-leaflet-geocoder.js"></script>
+    <script src="js/customer.js" defer></script>
+  </head>
+  <body>
+    <a href="/" target="_blank">Open another customer view</a> |
+    <a href="/dispatcher" target="_blank">Open dispatcher view</a> |
+    <a href="/driver" target="_blank">Open driver view</a>
+    <header>
+      <h1>
+        Uppsala Fyrisånkeri
+      </h1>
+    </header>
+    <div id="page">
+      <div class="interface">
+        <div class="sender">
+          <h2 id="center">Kontaktinfo för avsändare</h2>
+          <table>
+	          <tr>
+	            <td>
+	              <label for="Förnamn">Förnamn</label>
+	            </td>
+	            <td>
+	              <input type="text" id="Förnamnf" name="F" required="required" placeholder="Förnamn">
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>
+	              <label for="Efternamn">Efternamn</label>
+	            </td>
+	            <td>
+	              <input type="text" id="Efternamnf" name="E" required="required" placeholder="Efternamn">
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>
+	              <label for="Telefonnummerf">Telefonnummer</label>
+	            </td>
+	            <td>
+	              <input type="tel" id="Telefonnummerf" name="Tf" required="required" placeholder="Telefonnummer">
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>
+	              <label for="E-mail adressf">E-mail</label>
+	            </td>
+	            <td>
+	              <input type="email" id="emailf" name="Ef" required="required" placeholder="E-mail adress">
+	            </td>
+	          </tr>
+	        </table>
+          <br>
 
-    <br>
-        <h2 id="center">Kontaktinfo för mottagare</h2>
-        <table>
-          <tr>
-	  <td>
-	  <label for="Förnamn">Förnamn</label>
-	  </td>
-	  <td>
-	    <input type="text" id="Förnamn" name="F2" required="required" placeholder="Förnamn">
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	     <label for="Efternamn">Efternamn</label>
-	  </td>
-	  <td>
-	    <input type="text" id="Efternamn" name="E2" required="required" placeholder="Efternamn">
-	  </td>
-	</tr>
-          <tr>
-            <td>
-              <label for="E-mail adresst">E-mail adress</label>
-            </td>
-            <td>
-               <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
-            </td>
-          </tr>
-          <tr>
-            <td>
-                  <label for="Telefonnummert">Telefonnummer</label>
-            </td>
-            <td>
-                  <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
-            </td>
-          </tr>
-        </table>
-    <br>
-    <br>
-    <div id="extraInfo">
-    <label for="Ovrigt">Övrig info</label>
-    <br>
-    <textarea rows="4" cols="40" id="Ovrigt" name="O" form="usrform">
-    </textarea>
-    <br>
-    <button v-on:click="placeOrder">ORDER DELIVERY</button>
-    {{ orderId }}
-    </div>
-  </div>
-  </div>
-</body>
+        </div>
+        <div class="packageSpecific" id="page">
+          <h3 id="center">Välj upphämtning och leverans address</h3>
+          <div id="my-map"></div><br>
+          <table>
+            <tr>
+              <td>
+                <label for="Vikt">Vikt</label>
+              </td>
+              <td>
+                <input type="number" min="0" id="Vikt" name="V" required="required" placeholder="gram">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="Storlek">Storlek</label>
+              </td>
+              <td>
+                <select id="Storlek" name="s">
+                  <option>Störst</option>
+                  <option>Stor</option>
+                  <option>Mellan</option>
+                  <option>Liten</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="express">Express</label>
+              </td>
+              <td>
+                <input type="checkbox" v-model="express" @change="moveMarker" name="express" value="express" id="express"></input>
+              </td>
+            </tr>
+          </table>
+
+          <br>
+          <h2 id="center">Kontaktinfo för mottagare</h2>
+          <table>
+            <tr>
+	            <td>
+	              <label for="Förnamn">Förnamn</label>
+	            </td>
+	            <td>
+	              <input type="text" id="Förnamnt" name="F2" required="required" placeholder="Förnamn">
+	            </td>
+	          </tr>
+	          <tr>
+	            <td>
+	              <label for="Efternamn">Efternamn</label>
+	            </td>
+	            <td>
+	              <input type="text" id="Efternamnt" name="E2" required="required" placeholder="Efternamn">
+	            </td>
+	          </tr>
+            <tr>
+              <td>
+                <label for="E-mail adresst">E-mail adress</label>
+              </td>
+              <td>
+                <input type="email" id="emailt" name="Et" required="required" placeholder="E-mail adress">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="Telefonnummert">Telefonnummer</label>
+              </td>
+              <td>
+                <input type="tel" id="Telefonnummert" name="Tt" required="required" placeholder="Telefonnummer">
+              </td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          <div id="extraInfo">
+            <label for="Ovrigt">Övrig info</label>
+            <br>
+            <textarea rows="4" cols="40" id="Ovrigt" name="O" form="usrform">
+            </textarea>
+            <br>
+            <button v-on:click="openModal()" id="myBtn">Summarize Order</button>
+
+          </div>
+        </div>
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="modal-close">&times;</span>
+              <h2>Din order{{orderId}}</h2>
+
+            </div>
+            <div class="modal-body">
+              {{orderInfo.FnamnF}} {{orderInfo.EnamnF}} 
+              ditt paket kommer att levereras till
+              {{orderInfo.FnamnM}} {{orderInfo.EnamnM}} <br>
+              Vikt på Paketet: {{orderInfo.totalgrams}} g <br>
+              Paketets storlek: {{orderInfo.storlek}} <br>
+              Övrig info: {{orderInfo.Instructions}} <br>
+              Telefon Mottagare: {{orderInfo.telefonMottagare}} <br>
+              E-mail Mottagare:  {{orderInfo.emailMottagare}} <br>
+              Telefon Avsändare: {{orderInfo.telefonAvsändare}} <br>
+              E-mail Avsändare:  {{orderInfo.emailAvsändare}} <br>
+              Pris: {{getNumber()}} kr<br>
+              <button v-on:click="placeOrder">Place Order</button>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+  </body>
 </html>

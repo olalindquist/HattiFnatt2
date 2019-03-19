@@ -23,15 +23,12 @@
 
 
     <br><br>
-    Specify your truck's cargo capacity (feel free to choose a reasonable unit of measurement): <input type="textfield" v-model="maxCapacity" @change="updateDriver"/>
     <ul>
         <div class="interface">
-
           <div class="mission">
-            <div class = "top">
-              <div v-for="(order,index,i) in orders" v-if="(i==0) && (order.driverId == driverId)">
-               i
-              </div>
+            <div class="top">
+               {{lengthord()}} Jobb i kö
+
 
       </div>
       <div class="currentJob">
@@ -75,7 +72,6 @@
   </div>
 
     </ul>
-    <div v-if="driverLocation">Utilized capacity: {{ usedCapacity }}/{{ maxCapacity }}</div>
     <button v-on:click="quit">Quit</button>
   </div>
 

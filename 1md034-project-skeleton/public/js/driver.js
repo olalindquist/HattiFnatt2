@@ -142,7 +142,13 @@ var vm = new Vue({
       return {from: fromMarker, dest: destMarker, line: connectMarkers};
     },
       lengthord: function(order){
-          return this.kj
+          let siff = 0;
+          for (let key in this.orders) {
+                    if (this.orders[key].driverId){
+                        siff ++;
+                    }
+                }
+          return siff;
       },
   }
 });
