@@ -2,7 +2,8 @@
 
 body {
     font-family: arial;
-
+    text-align:center;
+    background-color:#DDDDFF;
 
 }
 .interactions {
@@ -23,11 +24,17 @@ body {
 .button:hover {
   background-color: #234;
 }
+.foraridentitet{
+    background-color:#DDDDFF;
+    
+
+    text-align:center;
+}
 
 .top {
-  background-color: #F4F4F4;
+  background-color: #DDDDFF;
   color: #000;
-  padding: 10px 10px 10px 20px;
+  padding-top: 10px;
   border-bottom: 10px solid #BBB;
   grid-auto-flow: row;
   font-size: 20px;
@@ -38,26 +45,27 @@ body {
   margin: 4px 0px 4px 0px;
 }
 .currentJob {
-  background-color: #F4F4F4;
+  background-color: #DDDDFF;
   color: #000;
   padding: 10px 10px 10px 20px;
   border-bottom: 10px solid #BBB;
   grid-auto-flow: row;
   font-size: 18px;
-  height: 60vh;
+  height: 40vh;
 }
 
 .interface {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 10% 70% 20%;
+  grid-template-columns: 10% 70% 18%;
   background-color: #DDD;
   color: #FFFFFF;
+  border-top:10px solid #BBB;
 }
 
 .mission {
   grid-column: 1;
-  background-color: #F4F4F4;
+  background-color: #DDDDFF;
   color: #000;
   border-radius: 0px;
   padding: 0px;
@@ -71,6 +79,7 @@ body {
   border-radius: 0px;
   padding: 0px;
   grid-auto-flow: row;
+  background-color:#DDDDFF;
 }
 
 #infoField {
@@ -83,11 +92,12 @@ body {
 	border: 0px solid rgba(0,0,0,0.4);
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 	margin: 0em auto;
+  border-bottom:10px solid #BBB;
 }
 
 .extraInfo {
   grid-column: 3;
-  background-color: #F4F4F4;
+  background-color: #DDDDFF;
   color: #000;
   border-radius: 0px;
   padding: 20px;

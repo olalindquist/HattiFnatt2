@@ -1,0 +1,15 @@
+body{
+    font-family: arial;
+    background-color:#f0f0d8;
+    padding:200px;
+}
+.klar {
+    background-color: #F4F4F4;
+    color: black;
+    padding: 20px;
+    border: 3px solid #DDDDFF;
+    text-align:center;
+}
+.text{
+    font-size:50px;
+}
